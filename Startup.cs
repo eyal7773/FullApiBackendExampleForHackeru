@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace BooksApi
@@ -58,7 +59,7 @@ namespace BooksApi
                         ValidateAudience = true,
                         ValidIssuer = Configuration["JWT:ValidIssuer"],
                         ValidAudience = Configuration["JWT:ValidAudeience"],
-                        //IssuerSigningKey = new SymmetricSecurityKey(E)
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                     };
                 });
 

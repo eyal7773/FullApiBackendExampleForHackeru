@@ -30,5 +30,18 @@ namespace BooksApi.Controllers
             return Unauthorized();
 
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(SignInModel signInModel)
+        {
+            var result = await _accountRepo.LoginAsync(signInModel);
+
+            if (string.IsNullOrEmpty(result))
+            {
+                return Unauthorized();
+            }
+
+            return Ok(result);
+        }
     }
 }
